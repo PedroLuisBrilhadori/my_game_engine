@@ -1,7 +1,11 @@
+HC = require('HC-master');
 require('game/inseto')
 
 local state = 'MENU';
 local debug = false;
+
+Width = 600;
+Height = 800;
  
 function love.update (dt)
     if state == 'JOGAR' then

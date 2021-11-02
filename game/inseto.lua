@@ -1,8 +1,8 @@
 Inseto = {}
 
 function Inseto:load() 
-    self.x = 400;
-    self.y = 300;
+    self.x = Height / 2;
+    self.y = Width / 2;
     self.speed = 200;
 
     self.xvel = self.speed * math.cos(math.pi / 4);

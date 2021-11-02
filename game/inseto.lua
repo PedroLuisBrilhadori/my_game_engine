@@ -66,6 +66,6 @@ function Inseto:draw()
 
     if self.debug then 
         self.body:draw();
-        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 10);
+        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 0);
     end
 end

@@ -1,3 +1,5 @@
-function love.draw()
-    love.graphics.print("formiga", 400, 300)
-end
+menu = require("game/menu");
+
+function love.draw() 
+    menu.comecar();
+end 

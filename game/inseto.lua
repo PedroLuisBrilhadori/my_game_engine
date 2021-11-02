@@ -1,8 +1,8 @@
 Inseto = {}
 
 function Inseto:load() 
-    self.x = Height / 2;
-    self.y = Width / 2;
+    self.x = 400;
+    self.y = 300;
     self.speed = 200;
 
     self.xvel = self.speed * math.cos(math.pi / 4);
@@ -18,9 +18,6 @@ function Inseto:load()
 end
 
 function Inseto:update(dt)
-
-    -- controles 
-
     if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
 		self.y = self.y - self.yvel * dt
 		self.x = self.x - self.xvel * dt

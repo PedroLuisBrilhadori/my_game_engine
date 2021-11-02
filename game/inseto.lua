@@ -1,8 +1,8 @@
 Inseto = {}
 
 function Inseto:load() 
-    self.x = 400;
-    self.y = 300;
+    self.x = Height / 2;
+    self.y = Width / 2;
     self.speed = 200;
 
     self.xvel = self.speed * math.cos(math.pi / 4);
@@ -11,9 +11,14 @@ function Inseto:load()
     self.width = 20;
     self.height = 20;
 
+    self.debug = true;
+
 end
 
 function Inseto:update(dt)
+
+    -- controles 
+
     if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
 		self.y = self.y - self.yvel * dt
 		self.x = self.x - self.xvel * dt
@@ -35,9 +40,29 @@ function Inseto:update(dt)
 	elseif love.keyboard.isDown("d") then
 		self.x = self.x + self.speed * dt
 	end
+
+    -- impede que o inseto passe para o lado de fora 
+
+    if self.y < 0 then 
+        self.y = 0;
+    end
+    if self.x < 0 then
+        self.x = 0;
+    end
+    if self.y > Width - self.width then 
+        self.y = Width - self.width;
+    end
+    if self.x > Height - self.height then 
+        self.x = Height - self.height;
+    end
+
 end
 
 
 function Inseto:draw() 
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
+
+    if self.debug then 
+        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 10);
+    end
 end

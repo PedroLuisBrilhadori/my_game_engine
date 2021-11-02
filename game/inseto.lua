@@ -11,13 +11,9 @@ function Inseto:load()
     self.width = 20;
     self.height = 20;
 
-<<<<<<< HEAD
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
     
     self.debug = true;
-
-=======
->>>>>>> parent of 5bc3a07 (feat: adiciona limites ao 'mundo')
 end
 
 function Inseto:update(dt)
@@ -58,19 +54,13 @@ function Inseto:update(dt)
         self.x = Height - self.height;
     end
 
-    -- move o corpo junto com a imagem 
-    self.body:moveTo(self.x + 10, self.y + 10);
-
 end
 
 
 function Inseto:draw() 
-    love.graphics.setColor(0, 0, 255, 255);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
-    love.graphics.setColor(255, 255, 255, 255);
 
     if self.debug then 
-        self.body:draw();
         love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 10);
     end
 end

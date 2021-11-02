@@ -1,4 +1,3 @@
-HC = require('HC-master');
 require('game/inseto')
 
 local state = 'MENU';
@@ -37,10 +36,10 @@ function love.keypressed(key)
     elseif key == 'm' then
         state = 'MENU'
     elseif key == 'o' then
-        if Inseto.debug then 
-            Inseto.debug = false;
-        else 
-            Inseto.debug = true;
-        end 
+        if debug == true then 
+            debug = false;
+        else
+            debug = true;
+        end
     end
 end 

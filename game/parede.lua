@@ -1,4 +1,5 @@
 Parede = {}
+Parede.__index = Parede;
 
 local function isColor (a)
     if a ~= nil then 
@@ -12,7 +13,9 @@ local function isColor (a)
     end
 end
 
-function Parede:load(x, y, width, height, ...)
+function Parede:new(x, y ,width, height, ...)
+    local self = setmetatable({}, Parede);
+    
     self.x = x;
     self.y = y;
     self.width = width;
@@ -40,16 +43,16 @@ function Parede:load(x, y, width, height, ...)
 
     self.body = HC.rectangle(self.x, self.y, self.width, self.height)
 
-    self.debug = true;
-end
 
+    return self;
+end
 
 function Parede:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(255,255,255,255);
 
-    if self.debug then
+    if Debug then
         self.body:draw();
         love.graphics.print("Parede Y: " .. tostring(self.y) .. "\nParede X: " .. tostring(self.x), 10, 50);
     end

@@ -14,7 +14,6 @@ function Inseto:load()
 
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
     
-    self.debug = true;
 end
 
 function Inseto:update(dt)
@@ -74,7 +73,7 @@ function Inseto:draw()
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(255, 255, 255, 255);
 
-    if self.debug then 
+    if Debug then 
         self.body:draw();
         love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x).. "\ncolisão: " .. colisao), 10, 0);
     end

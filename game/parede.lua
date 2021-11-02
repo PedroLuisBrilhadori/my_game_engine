@@ -13,12 +13,11 @@ parede['g'] = 255;
 parede['b'] = 255;
 parede['a'] = 255;
 
-function parede:init (x, y, width, height, angle,...)
+function parede:init (x, y, width, height,...)
     parede.x = x;
     parede.y = y;
     parede.height = height;
     parede.width = width;
-    parede.angle = angle;
     
     local r, g, b, a = ...;
 

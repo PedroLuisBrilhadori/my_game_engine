@@ -1,50 +1,43 @@
-local inseto = {}
+Inseto = {}
 
-inseto['x']  = 0;
-inseto['y'] = 0;
-inseto['width'] = 0;
-inseto['height'] = 0;
+function Inseto:load() 
+    self.x = 400;
+    self.y = 300;
+    self.speed = 200;
 
-inseto['dx'] = 0;
-inseto['dy'] = 0;
+    self.xvel = self.speed * math.cos(math.pi / 4);
+    self.yvel = self.speed * math.sin(math.pi / 4);
 
-
-function inseto:init(x, y, width, heigth) 
-    inseto.x = x;
-    inseto.y = y;
-    inseto.width = width;
-    inseto.height = heigth;
-end
-
-function inseto:update(dt)
-    if inseto.dy < 0 then
-        inseto.y = math.max(0, inseto.y + inseto.dy * dt)
-    else
-        inseto.y = math.min(VIRTUAL_HEIGHT - inseto.height, inseto.y + inseto.dy * dt)
-    end
-
-
-    if inseto.dx < 0 then
-        inseto.x = math.max(0, inseto.x + inseto.dx * dt)
-    else
-        inseto.x = math.min(VIRTUAL_WIDTH - inseto.width, inseto.x + inseto.dx * dt)
-    end
+    self.width = 20;
+    self.height = 20;
 
 end
 
-function inseto:collides(parede)
-    if inseto.x > parede.x + parede.width or parede.x > inseto.x + inseto.width then
-        return false;
-    end
-
-    if inseto.y > parede.y + parede.height or parede.y > inseto.y + inseto.height then
-        return false;
-    end
-    return true;
+function Inseto:update(dt)
+    if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
+		self.y = self.y - self.yvel * dt
+		self.x = self.x - self.xvel * dt
+	elseif love.keyboard.isDown("a") and love.keyboard.isDown("s") then
+		self.y = self.y + self.yvel * dt
+		self.x = self.x - self.xvel * dt
+	elseif love.keyboard.isDown("s") and love.keyboard.isDown("d") then
+		self.y = self.y + self.yvel * dt
+		self.x = self.x + self.xvel * dt
+	elseif love.keyboard.isDown("d") and love.keyboard.isDown("w") then
+		self.y = self.y - self.yvel * dt
+		self.x = self.x + self.xvel * dt
+	elseif love.keyboard.isDown("w") then
+		self.y = self.y - self.speed * dt
+	elseif love.keyboard.isDown("a") then
+		self.x = self.x - self.speed * dt
+	elseif love.keyboard.isDown("s") then
+		self.y = self.y + self.speed * dt
+	elseif love.keyboard.isDown("d") then
+		self.x = self.x + self.speed * dt
+	end
 end
 
-function inseto:render()
-    love.graphics.rectangle('fill', inseto.x, inseto.y, inseto.width, inseto.height);
-end
 
-return inseto
+function Inseto:draw() 
+    love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
+end

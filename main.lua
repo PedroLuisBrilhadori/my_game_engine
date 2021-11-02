@@ -3,10 +3,14 @@ require('game/inseto')
 require('game/parede');
 
 local state = 'MENU';
-local debug = false;
+
+local bloco;
+local bloco1;
 
 Width = 600;
 Height = 800;
+
+Debug = true;
  
 function love.update (dt)
     if state == 'JOGAR' then
@@ -17,7 +21,8 @@ end
 function love.load() 
     love.window.setTitle("jogo da formiga");
     Inseto:load();
-    Parede:load(100, 200, 200, 10, 255, 0, 0);
+    bloco1 = Parede:new(100, 200, 200, 10, 255, 0, 0);
+    bloco = Parede:new(100, 400, 200, 10, 255, 0, 0);
 end
 
 function love.draw()
@@ -27,7 +32,8 @@ function love.draw()
     elseif state == 'JOGAR' then
         love.graphics.print('M - menu', 700, 10);
         Inseto:draw();
-        Parede:draw();
+        bloco:draw();
+        bloco1:draw()
     elseif state == 'OPCOES' then
         love.graphics.print('Opções \nM - menu', 400, 300);
     end 
@@ -43,12 +49,10 @@ function love.keypressed(key)
     elseif key == 'm' then
         state = 'MENU'
     elseif key == 'o' then
-        if Inseto.debug then 
-            Inseto.debug = false;
-            Parede.debug = false;
+        if Debug then 
+            Debug = false;
         else
-            Inseto.debug = true;
-            Parede.debug = true;
+            Debug = true
         end
     end
 end 

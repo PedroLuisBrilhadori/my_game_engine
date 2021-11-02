@@ -1,4 +1,5 @@
 Inseto = {}
+local colisao;
 
 function Inseto:load() 
     self.x = Height / 2;
@@ -54,7 +55,16 @@ function Inseto:update(dt)
         self.x = Height - self.height;
     end
 
+    -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + 10, self.y + 10);
+
+    -- detecta colisão
+    colisao = "não"
+	for shape, delta in pairs(HC.collisions(self.body)) do
+		colisao = "sim"
+		self.x = self.x + delta.x
+		self.y = self.y + delta.y
+	end
 
 end
 
@@ -66,6 +76,6 @@ function Inseto:draw()
 
     if self.debug then 
         self.body:draw();
-        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 0);
+        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x).. "\ncolisão: " .. colisao), 10, 0);
     end
 end

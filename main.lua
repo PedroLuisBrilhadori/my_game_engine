@@ -1,5 +1,6 @@
 HC = require('HC-master');
 require('game/inseto')
+require('game/parede');
 
 local state = 'MENU';
 local debug = false;
@@ -16,6 +17,7 @@ end
 function love.load() 
     love.window.setTitle("jogo da formiga");
     Inseto:load();
+    Parede:load(100, 200, 200, 10, 255, 0, 0);
 end
 
 function love.draw()
@@ -25,6 +27,7 @@ function love.draw()
     elseif state == 'JOGAR' then
         love.graphics.print('M - menu', 700, 10);
         Inseto:draw();
+        Parede:draw();
     elseif state == 'OPCOES' then
         love.graphics.print('Opções \nM - menu', 400, 300);
     end 
@@ -42,8 +45,10 @@ function love.keypressed(key)
     elseif key == 'o' then
         if Inseto.debug then 
             Inseto.debug = false;
+            Parede.debug = false;
         else
             Inseto.debug = true;
+            Parede.debug = true;
         end
     end
 end 

@@ -1,55 +1,6 @@
-local parede = {}
+Parede = {}
 
-parede['x'] = 0;
-parede['y'] = 0;
-parede['width'] = 0;
-parede['height'] = 0;
-parede['angle'] = 90;
-
-parede['bug'] = false;
-
-parede['r'] = 255;
-parede['g'] = 255;
-parede['b'] = 255;
-parede['a'] = 255;
-
-function parede:init (x, y, width, height,...)
-    parede.x = x;
-    parede.y = y;
-    parede.height = height;
-    parede.width = width;
-    
-    local r, g, b, a = ...;
-
-    if isColor(r) then
-        parede.r = r;
-        if isColor(g) then 
-            parede.g = g;
-            if isColor(b) then
-                parede.b = b;
-                if isColor(a) then
-                    parede.a = a;
-                end
-            end
-        end
-    end
-end
-
-function parede:bugavel(switch) 
-    if switch then
-        parede.bug = true
-    else 
-        parede.bug = false
-    end
-end
-
-function parede:render()
-    love.graphics.setColor(parede.r, parede.g, parede.b, parede.a);
-    love.graphics.rectangle('fill', parede.x, parede.y, parede.width, parede.height);
-    love.graphics.setColor(255, 255, 255, 255);
-end
-
-function isColor (a)
+local function isColor (a)
     if a ~= nil then 
         if a <= 255 and a >= 0 then
             return true;
@@ -61,4 +12,45 @@ function isColor (a)
     end
 end
 
-return parede
+function Parede:load(x, y, width, height, ...)
+    self.x = x;
+    self.y = y;
+    self.width = width;
+    self.height = height;
+
+    self.r = 255;
+    self.g = 255;
+    self.b = 255;
+    self.a = 255;
+
+    local r, g, b, a = ...;
+
+    if isColor(r) then
+        self.r = r;
+        if isColor(g) then 
+            self.g = g;
+            if isColor(b) then
+                self.b = b;
+                if isColor(a) then
+                    self.a = a;
+                end
+            end
+        end
+    end
+
+    self.body = HC.rectangle(self.x, self.y, self.width, self.height)
+
+    self.debug = true;
+end
+
+
+function Parede:draw()
+    love.graphics.setColor(self.r, self.g, self.b, self.a);
+    love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
+    love.graphics.setColor(255,255,255,255);
+
+    if self.debug then
+        self.body:draw();
+        love.graphics.print("Parede Y: " .. tostring(self.y) .. "\nParede X: " .. tostring(self.x), 10, 50);
+    end
+end

@@ -55,7 +55,7 @@ function love.load()
     love.window.setTitle("jogo da formiga");
     
     player.init(0, 400, 300, 20, 20);
-    bloco.init(0, 300, 100, 100, 20, 255, 90, 0, 0);
+    bloco.init(0, 300, 100, 100, 20, 0 , 0);
 end
 
 function love.draw()

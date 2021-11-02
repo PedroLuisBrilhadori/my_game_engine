@@ -32,6 +32,16 @@ function inseto:update(dt)
 
 end
 
+function inseto:collides(parede)
+    if inseto.x > parede.x + parede.width or parede.x > inseto.x + inseto.width then
+        return false;
+    end
+
+    if inseto.y > parede.y + parede.height or parede.y > inseto.y + inseto.height then
+        return false;
+    end
+    return true;
+end
 
 function inseto:render()
     love.graphics.rectangle('fill', inseto.x, inseto.y, inseto.width, inseto.height);

@@ -19,6 +19,14 @@ function debugMode:render()
     love.graphics.print("player Y: ".. tostring(player.y), 10, 40); 
     love.graphics.print("player DX: ".. tostring(player.dx), 10, 65); 
     love.graphics.print("player DY: ".. tostring(player.dy), 10, 80); 
+    love.graphics.print("velocidade: ".. tostring(VELOCIDADE_INSETO), 10, 95); 
+    love.graphics.print("colisão: ".. tostring(player.collides(0, bloco)), 10, 110); 
+
+
+    
+    love.graphics.print("parede X: ".. tostring(bloco.x), 10, 200); 
+    love.graphics.print("parede Y: ".. tostring(bloco.y), 10, 215); 
+    love.graphics.print("parede BUGAVEL: ".. tostring(bloco.bug), 10, 230); 
 end
  
 function love.update (dt)
@@ -36,6 +44,8 @@ function love.update (dt)
             player.dx = 0;
             player.dy = 0;
         end
+
+        player.collides(0, bloco);
 
         player.update(0, dt);
     end
@@ -87,5 +97,9 @@ function love.keypressed(key)
         else
             debug = true;
         end
+    elseif key == '9' then
+        VELOCIDADE_INSETO = VELOCIDADE_INSETO + 10;
+    elseif key == '8' then  
+        VELOCIDADE_INSETO = VELOCIDADE_INSETO - 10;
     end
 end 

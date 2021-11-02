@@ -40,10 +40,10 @@ function love.keypressed(key)
     elseif key == 'm' then
         state = 'MENU'
     elseif key == 'o' then
-        if debug == true then 
-            debug = false;
+        if Inseto.debug then 
+            Inseto.debug = false;
         else
-            debug = true;
+            Inseto.debug = true;
         end
     end
 end 

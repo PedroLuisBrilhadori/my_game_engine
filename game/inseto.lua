@@ -54,13 +54,18 @@ function Inseto:update(dt)
         self.x = Height - self.height;
     end
 
+    self.body:moveTo(self.x + 10, self.y + 10);
+
 end
 
 
 function Inseto:draw() 
+    love.graphics.setColor(0, 0, 255, 255);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
+    love.graphics.setColor(255, 255, 255, 255);
 
     if self.debug then 
+        self.body:draw();
         love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x)), 10, 10);
     end
 end

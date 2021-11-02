@@ -1,8 +1,8 @@
 Inseto = {}
 
 function Inseto:load() 
-    self.x = Height / 2;
-    self.y = Width / 2;
+    self.x = 400;
+    self.y = 300;
     self.speed = 200;
 
     self.xvel = self.speed * math.cos(math.pi / 4);
@@ -11,16 +11,16 @@ function Inseto:load()
     self.width = 20;
     self.height = 20;
 
+<<<<<<< HEAD
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
     
     self.debug = true;
 
+=======
+>>>>>>> parent of 5bc3a07 (feat: adiciona limites ao 'mundo')
 end
 
 function Inseto:update(dt)
-
-    -- controles 
-
     if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
 		self.y = self.y - self.yvel * dt
 		self.x = self.x - self.xvel * dt

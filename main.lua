@@ -3,7 +3,7 @@ inseto = require('game/inseto')
 local state = 'MENU'
 local debug = 'off';
 
-VIRTUAL_WIDTH = 700;
+VIRTUAL_WIDTH = 800;
 VIRTUAL_HEIGHT = 600;
 
 VELOCIDADE_INSETO = 200;

@@ -27,7 +27,7 @@ function inseto:update(dt)
     if inseto.dx < 0 then
         inseto.x = math.max(0, inseto.x + inseto.dx * dt)
     else
-        inseto.x = math.min(VIRTUAL_HEIGHT - inseto.height, inseto.x + inseto.dx * dt)
+        inseto.x = math.min(VIRTUAL_WIDTH - inseto.width, inseto.x + inseto.dx * dt)
     end
 
 end

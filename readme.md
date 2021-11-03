@@ -1,4 +1,4 @@
-# jogo dos instetos 
+# jogo dos insetos 
 
 ## Game Off 2021 | Bug 
 Jogo desenvolvido por 

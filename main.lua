@@ -1,11 +1,13 @@
 HC = require('HC-master');
 require('game/inseto')
 require('game/objects/parede');
+require('game/objects/buttons');
 
 local state = 'MENU';
 
 local bloco;
 local bloco1;
+local button;
 
 Width = 600;
 Height = 800;
@@ -21,6 +23,7 @@ end
 function love.load() 
     love.window.setTitle("jogo da formiga");
     Inseto:load();
+    button = Button:new(500, 400, 100, 50, "começar", 0, 0, 1);
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
 end
@@ -34,6 +37,7 @@ function love.draw()
         Inseto:draw();
         bloco:draw();
         bloco1:draw();
+        button:draw();
     elseif state == 'OPCOES' then
         love.graphics.print('Opções \nM - menu', 400, 300);
     end 

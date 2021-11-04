@@ -63,14 +63,13 @@ function Inseto:update(dt)
 		self.x = self.x + delta.x
 		self.y = self.y + delta.y
 	end
-
 end
 
 
 function Inseto:draw() 
-    love.graphics.setColor(0, 0, 255, 255);
+    love.graphics.setColor(0, 0, 1, 1);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
-    love.graphics.setColor(255, 255, 255, 255);
+    love.graphics.setColor(1, 1, 1, 1);
 
     if Debug then 
         self.body:draw();

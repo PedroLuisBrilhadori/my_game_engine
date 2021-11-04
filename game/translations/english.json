@@ -1,0 +1,7 @@
+{
+    "menu": {
+        "start": "start",
+        "options": "options",
+        "exit": "exit"
+    }
+}

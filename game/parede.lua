@@ -2,8 +2,8 @@ Parede = {}
 Parede.__index = Parede;
 
 local function isColor (a)
-    if a ~= nil then 
-        if a <= 255 and a >= 0 then
+    if type(a) == type(1) then 
+        if a <= 1 and a >= 0 then
             return true;
         else 
             return false;
@@ -43,14 +43,13 @@ function Parede:new(x, y ,width, height, ...)
 
     self.body = HC.rectangle(self.x, self.y, self.width, self.height)
 
-
     return self;
 end
 
 function Parede:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
-    love.graphics.setColor(255,255,255,255);
+    love.graphics.setColor(1, 1, 1, 1);
 
     if Debug then
         self.body:draw();

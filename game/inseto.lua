@@ -4,7 +4,7 @@ local colisao;
 function Inseto:load() 
     self.x = Height / 2;
     self.y = Width / 2;
-    self.speed = 200;
+    self.speed = 600;
 
     self.xvel = self.speed * math.cos(math.pi / 4);
     self.yvel = self.speed * math.sin(math.pi / 4);
@@ -13,7 +13,6 @@ function Inseto:load()
     self.height = 20;
 
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
-    
 end
 
 function Inseto:update(dt)
@@ -55,7 +54,7 @@ function Inseto:update(dt)
     end
 
     -- move o "corpo" de colisão junto com a figura do inseto
-    self.body:moveTo(self.x + 10, self.y + 10);
+    self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 
     -- detecta colisão
     colisao = "não"

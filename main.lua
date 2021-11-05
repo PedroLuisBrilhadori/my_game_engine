@@ -71,11 +71,11 @@ function love.keypressed(key)
     if key == "escape" then
         love.event.quit();
     elseif key == "1" then
-        State = 'JOGAR'
+        State = 'JOGAR';
     elseif key == "2" then
-        State = 'OPCOES'
+        State = 'OPCOES';
     elseif key == 'm' then
-        State = 'MENU'
+        State = 'MENU';
     elseif key == 'o' then
         if Debug then 
             Debug = false;

@@ -17,25 +17,25 @@ end
 
 function Inseto:update(dt)
     if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
-		self.y = self.y - self.yvel * dt
-		self.x = self.x - self.xvel * dt
+		self.y = self.y - self.yvel * dt;
+		self.x = self.x - self.xvel * dt;
 	elseif love.keyboard.isDown("a") and love.keyboard.isDown("s") then
-		self.y = self.y + self.yvel * dt
-		self.x = self.x - self.xvel * dt
+		self.y = self.y + self.yvel * dt;
+		self.x = self.x - self.xvel * dt;
 	elseif love.keyboard.isDown("s") and love.keyboard.isDown("d") then
-		self.y = self.y + self.yvel * dt
-		self.x = self.x + self.xvel * dt
+		self.y = self.y + self.yvel * dt;
+		self.x = self.x + self.xvel * dt;
 	elseif love.keyboard.isDown("d") and love.keyboard.isDown("w") then
-		self.y = self.y - self.yvel * dt
-		self.x = self.x + self.xvel * dt
+		self.y = self.y - self.yvel * dt;
+		self.x = self.x + self.xvel * dt;
 	elseif love.keyboard.isDown("w") then
-		self.y = self.y - self.speed * dt
+		self.y = self.y - self.speed * dt;
 	elseif love.keyboard.isDown("a") then
-		self.x = self.x - self.speed * dt
+		self.x = self.x - self.speed * dt;
 	elseif love.keyboard.isDown("s") then
-		self.y = self.y + self.speed * dt
+		self.y = self.y + self.speed * dt;
 	elseif love.keyboard.isDown("d") then
-		self.x = self.x + self.speed * dt
+		self.x = self.x + self.speed * dt;
 	end
 
     -- impede que o inseto passe para o lado de fora 
@@ -60,8 +60,8 @@ function Inseto:update(dt)
     colisao = "não"
 	for shape, delta in pairs(HC.collisions(self.body)) do
 		colisao = "sim"
-		self.x = self.x + delta.x
-		self.y = self.y + delta.y
+		self.x = self.x + delta.x;
+		self.y = self.y + delta.y;
 	end
 end
 

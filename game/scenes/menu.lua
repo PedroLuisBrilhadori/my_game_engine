@@ -1,8 +1,6 @@
 Menu = {}
 require('game/objects/buttons');
 
-
-
 -- MENU BUTTONS
 local bntComecar;
 local bntOpcoes;
@@ -28,7 +26,7 @@ function Menu:update(x, y)
         State = 'JOGAR';
     end
     if bntOpcoes:update(x, y) then
-        State = 'OPCOES'
+        State = 'OPCOES';
     end
     if bntExit:update(x,y) then
         love.event.quit();

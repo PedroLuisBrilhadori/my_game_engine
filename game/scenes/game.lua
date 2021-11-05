@@ -1,6 +1,6 @@
 Game = {}
 
-require('game/inseto')
+require('game/inseto');
 require('game/objects/parede');
 local bloco;
 local bloco1;
@@ -17,9 +17,9 @@ function Game:draw()
 
     Inseto:draw();
     bloco:draw();
-    bloco1:draw()
+    bloco1:draw();
 end
 
 function Game:update(dt)
-    Inseto:update(dt)
+    Inseto:update(dt);
 end

@@ -8,4 +8,5 @@ e
 
 
 ### Libs Utilizadas
-- <a href="https://github.com/vrld/HC"> HC </a>  Usada as para colisões 
+- <a href="https://github.com/vrld/HC"> HC </a>  Usada as para colisões.
+- <a href="https://github.com/rxi/json.lua"> Json </a> Usada para as traduções.

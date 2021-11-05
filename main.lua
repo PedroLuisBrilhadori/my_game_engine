@@ -52,9 +52,6 @@ end
 
 
 function love.update (dt)
-    if state == 'MENU' then
-
-    end
     if state == 'JOGAR' then
         Inseto:update(dt)
     end

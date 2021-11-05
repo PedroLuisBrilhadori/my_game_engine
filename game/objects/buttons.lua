@@ -50,6 +50,17 @@ function Button:new(x, y, width, height, text, ...)
     return self
 end
 
+function Button:update()
+    if love.mouse.isDown(1) then 
+        if 
+            love.mouse.getX() >= self.x and love.mouse.getX() <= (self.x + self.width) and
+            love.mouse.getY() >= self.y and love.mouse.getY() <= (self.y + self.height)
+        then
+            return true
+        end
+    end
+end
+
 function Button:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);

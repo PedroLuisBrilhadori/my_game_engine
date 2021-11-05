@@ -25,7 +25,7 @@ function Button:new(x, y, width, height, text, ...)
     self.text = text;
 
     self.textx = x ;
-    self.texty = (y + (height / 2)) - 10;
+    self.texty = (y + (height / 2)) - 8;
 
     self.r = 255;
     self.g = 255;

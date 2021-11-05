@@ -54,14 +54,12 @@ function Button:translate(translate)
     self.text = translate
 end
 
-function Button:update()
-    if love.mouse.isDown(1) then 
-        if 
-            love.mouse.getX() >= self.x and love.mouse.getX() <= (self.x + self.width) and
-            love.mouse.getY() >= self.y and love.mouse.getY() <= (self.y + self.height)
-        then
-            return true
-        end
+function Button:update(x, y)
+    if 
+        x >= self.x and x <= (self.x + self.width) and
+        y >= self.y and y <= (self.y + self.height)
+    then
+        return true
     end
 end
 

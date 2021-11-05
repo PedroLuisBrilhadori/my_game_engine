@@ -4,7 +4,8 @@ require('game/inseto')
 require('game/objects/parede');
 require('game/objects/buttons');
 
-local jsonRaw = ''; 
+local jsonRawPT = '';
+local jsonRawEN = ''; 
 local translations;
 
 local state = 'MENU';
@@ -14,6 +15,10 @@ local bntComecar;
 local bntOpcoes;
 local bntExit;
 
+-- OPTIONS BUTTONS;
+local bntTranslatePT;
+local bntTranslateEN;
+
 -- OBJECTS IN GAME
 local bloco;
 local bloco1;
@@ -22,7 +27,29 @@ Width = 600;
 Height = 800;
 
 Debug = true;
- 
+
+for linhas in io.lines('game/translations/portugues.json') do
+    jsonRawPT = jsonRawPT .. linhas;
+end        
+for linhas in io.lines('game/translations/english.json') do
+    jsonRawEN = jsonRawEN .. linhas;
+end        
+
+PT = Json.decode(jsonRawPT); 
+EN = Json.decode(jsonRawEN);
+
+translations = PT;
+
+local function translate()
+    bntComecar:translate(translations.menu.start);
+    bntOpcoes:translate(translations.menu.options);
+    bntExit:translate(translations.menu.exit);
+
+    bntTranslatePT:translate(translations.options.portuguese);
+    bntTranslateEN:translate(translations.options.english);
+end  
+
+
 function love.update (dt)
     if state == 'MENU' then
         if bntComecar:update() then 
@@ -38,24 +65,32 @@ function love.update (dt)
     if state == 'JOGAR' then
         Inseto:update(dt)
     end
+    if state == 'OPCOES' then
+        if bntTranslateEN:update() then 
+            translations = EN;
+            translate();
+        end
+        if bntTranslatePT:update() then
+            translations = PT;
+            translate();
+        end
+    end 
 end
 
 function love.load() 
 
-    for linhas in io.lines('game/translations/portugues.json') do
-        jsonRaw = jsonRaw .. linhas;
-    end
-    translations = Json.decode(jsonRaw);
-
-
     love.window.setTitle("jogo da formiga");
     Inseto:load();
 
-    local buttonsHeight = 100
+    local buttonsHeight = 100 
     
-    bntComecar = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 40, buttonsHeight, 20, translations.menu.start, 0, 0.5, 0);
+    bntComecar = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 40, buttonsHeight, 20, translations.menu.start, 0, 0.6, 0);
     bntOpcoes = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 10, buttonsHeight, 20, translations.menu.options, 0, 0, 1);
     bntExit = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) + 20, buttonsHeight, 20, translations.menu.exit, 1, 0, 0);
+
+    bntTranslatePT = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 40, buttonsHeight, 20, translations.options.portuguese, 0, 0.6, 0);
+    bntTranslateEN = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 10, buttonsHeight, 20, translations.options.english, 0, 0, 1);
+
 
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
@@ -73,7 +108,8 @@ function love.draw()
         bloco:draw();
         bloco1:draw()
     elseif state == 'OPCOES' then
-        love.graphics.print('Opções \nM - menu', 400, 300);
+        bntTranslatePT:draw();
+        bntTranslateEN:draw();
     end 
 end
 

@@ -50,6 +50,10 @@ function Button:new(x, y, width, height, text, ...)
     return self
 end
 
+function Button:translate(translate) 
+    self.text = translate
+end
+
 function Button:update()
     if love.mouse.isDown(1) then 
         if 

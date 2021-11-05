@@ -53,32 +53,11 @@ end
 
 function love.update (dt)
     if state == 'MENU' then
-        if bntComecar:update() then 
-            state = 'JOGAR';
-        end
-        if bntOpcoes:update() then
-            state = 'OPCOES'
-        end
-        if bntExit:update() then
-            love.event.quit();
-        end
+
     end
     if state == 'JOGAR' then
         Inseto:update(dt)
     end
-    if state == 'OPCOES' then
-        if bntTranslateEN:update() then 
-            translations = EN;
-            translate();
-        end
-        if bntTranslatePT:update() then
-            translations = PT;
-            translate();
-        end
-        if bntMenu:update() then
-            state = 'MENU';
-        end
-    end 
 end
 
 function love.load() 
@@ -135,3 +114,29 @@ function love.keypressed(key)
         end
     end
 end 
+
+function love.mousepressed(x, y, button, istouch, presses)
+    if state == 'MENU' and button == 1  and presses == 1 then
+        if bntComecar:update(x, y) then 
+            state = 'JOGAR';
+        end
+        if bntOpcoes:update(x, y) then
+            state = 'OPCOES'
+        end
+        if bntExit:update(x,y) then
+            love.event.quit();
+        end
+    elseif state == 'OPCOES' then
+        if bntTranslateEN:update(x, y) then 
+            translations = EN;
+            translate();
+        end
+        if bntTranslatePT:update(x, y) then
+            translations = PT;
+            translate();
+        end
+        if bntMenu:update(x, y) then
+            state = 'MENU';
+        end
+    end 
+end

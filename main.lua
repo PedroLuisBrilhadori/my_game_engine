@@ -1,30 +1,30 @@
+----- GLOBAL VARS
 HC = require('HC-master');
 Json = require('cjson');
+State = 'MENU';
+Width = 600;
+Height = 800;
+Debug = true;
+
+
+-------------- OBJECTS IN GAME
 require('game/inseto')
 require('game/objects/parede');
-require('game/objects/buttons');
-require('game/scenes/menu');
-
-local jsonRawPT = '';
-local jsonRawEN = ''; 
-Translations = {};
-
-State = 'MENU';
-
-
--- OPTIONS BUTTONS;
-local bntTranslatePT;
-local bntTranslateEN;
-local bntMenu;
-
--- OBJECTS IN GAME
 local bloco;
 local bloco1;
 
-Width = 600;
-Height = 800;
+------------------- SCENES 
+-- MENU
+require('game/scenes/menu');
 
-Debug = true;
+-- OPTIONS 
+require('game/scenes/options');
+
+
+-------------- TRANSLATIONS 
+local jsonRawPT = '';
+local jsonRawEN = ''; 
+Translations = {};
 
 for linhas in io.lines('game/translations/portugues.json') do
     jsonRawPT = jsonRawPT .. linhas;
@@ -38,12 +38,13 @@ EN = Json.decode(jsonRawEN);
 
 Translations = PT;
 
-local function translate()
+function Translate()
     Menu:translate();
-    bntTranslatePT:translate(Translations.options.portuguese);
-    bntTranslateEN:translate(Translations.options.english);
+    Options:translate();
 end  
 
+
+------------ LOVE FUNCTIONS
 
 function love.update (dt)
     if State == 'JOGAR' then
@@ -52,17 +53,13 @@ function love.update (dt)
 end
 
 function love.load() 
-
     love.window.setTitle("jogo da formiga");
-    Inseto:load();
+
+    --- SCENES 
     Menu:load();
-
-    local buttonsHeight = 100 
+    Options:load();
     
-    bntTranslateEN = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 40, buttonsHeight, 20, Translations.options.english, 0, 0, 1);
-    bntTranslatePT = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 10, buttonsHeight, 20, Translations.options.portuguese, 0, 0.6, 0);
-    bntMenu = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) + 20, buttonsHeight, 20, Translations.options.menu, 0.5, 0, 0);
-
+    Inseto:load();
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
 end
@@ -77,9 +74,7 @@ function love.draw()
         bloco:draw();
         bloco1:draw()
     elseif State == 'OPCOES' then
-        bntTranslatePT:draw();
-        bntTranslateEN:draw();
-        bntMenu:draw();
+        Options:draw();
     end 
 end
 
@@ -96,25 +91,15 @@ function love.keypressed(key)
         if Debug then 
             Debug = false;
         else
-            Debug = true
+            Debug = true;
         end
     end
 end 
 
 function love.mousepressed(x, y, button, istouch, presses)
     if State == 'MENU' and button == 1  and presses == 1 then
-        Menu:update(x, y)
+        Menu:update(x, y);
     elseif State == 'OPCOES' then
-        if bntTranslateEN:update(x, y) then 
-            Translations = EN;
-            translate();
-        end
-        if bntTranslatePT:update(x, y) then
-            Translations = PT;
-            translate();
-        end
-        if bntMenu:update(x, y) then
-            State = 'MENU';
-        end
+        Options:update(x, y);
     end 
 end

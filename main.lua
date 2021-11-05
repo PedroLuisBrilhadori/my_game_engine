@@ -6,13 +6,6 @@ Width = 600;
 Height = 800;
 Debug = true;
 
-
--------------- OBJECTS IN GAME
-require('game/inseto')
-require('game/objects/parede');
-local bloco;
-local bloco1;
-
 ------------------- SCENES 
 -- MENU
 require('game/scenes/menu');
@@ -20,6 +13,8 @@ require('game/scenes/menu');
 -- OPTIONS 
 require('game/scenes/options');
 
+-- GAME
+require('game/scenes/game');
 
 -------------- TRANSLATIONS 
 local jsonRawPT = '';
@@ -48,7 +43,7 @@ end
 
 function love.update (dt)
     if State == 'JOGAR' then
-        Inseto:update(dt)
+        Game:update(dt);
     end
 end
 
@@ -58,21 +53,15 @@ function love.load()
     --- SCENES 
     Menu:load();
     Options:load();
-    
-    Inseto:load();
-    bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
-    bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
+    Game:load();
 end
 
 function love.draw()
 
     if State == 'MENU' then
-        Menu:draw()
+        Menu:draw();
     elseif State == 'JOGAR' then
-        love.graphics.print('M - menu', 700, 10);
-        Inseto:draw();
-        bloco:draw();
-        bloco1:draw()
+        Game:draw();
     elseif State == 'OPCOES' then
         Options:draw();
     end 

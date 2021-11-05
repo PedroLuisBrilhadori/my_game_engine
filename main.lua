@@ -1,7 +1,11 @@
 HC = require('HC-master');
+Json = require('cjson');
 require('game/inseto')
 require('game/objects/parede');
 require('game/objects/buttons');
+
+local jsonRaw = ''; 
+local translations;
 
 local state = 'MENU';
 
@@ -37,12 +41,21 @@ function love.update (dt)
 end
 
 function love.load() 
+
+    for linhas in io.lines('game/translations/portugues.json') do
+        jsonRaw = jsonRaw .. linhas;
+    end
+    translations = Json.decode(jsonRaw);
+
+
     love.window.setTitle("jogo da formiga");
     Inseto:load();
+
+    local buttonsHeight = 100
     
-    bntComecar = Button:new((Height / 2) - 40, (Width / 2) - 40, 80, 20, "Começar", 0, 0.5, 0);
-    bntOpcoes = Button:new((Height / 2) - 40, (Width / 2) - 10, 80, 20, "Opções", 0, 0, 1);
-    bntExit = Button:new((Height / 2) - 40, (Width / 2) + 20, 80, 20, "Sair", 1, 0, 0);
+    bntComecar = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 40, buttonsHeight, 20, translations.menu.start, 0, 0.5, 0);
+    bntOpcoes = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 10, buttonsHeight, 20, translations.menu.options, 0, 0, 1);
+    bntExit = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) + 20, buttonsHeight, 20, translations.menu.exit, 1, 0, 0);
 
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);

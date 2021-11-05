@@ -18,6 +18,7 @@ local bntExit;
 -- OPTIONS BUTTONS;
 local bntTranslatePT;
 local bntTranslateEN;
+local bntMenu;
 
 -- OBJECTS IN GAME
 local bloco;
@@ -74,6 +75,9 @@ function love.update (dt)
             translations = PT;
             translate();
         end
+        if bntMenu:update() then
+            state = 'MENU';
+        end
     end 
 end
 
@@ -88,9 +92,9 @@ function love.load()
     bntOpcoes = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 10, buttonsHeight, 20, translations.menu.options, 0, 0, 1);
     bntExit = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) + 20, buttonsHeight, 20, translations.menu.exit, 1, 0, 0);
 
-    bntTranslatePT = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 40, buttonsHeight, 20, translations.options.portuguese, 0, 0.6, 0);
-    bntTranslateEN = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 10, buttonsHeight, 20, translations.options.english, 0, 0, 1);
-
+    bntTranslateEN = Button:new((Height / 2) - buttonsHeight / 2, (Width / 2) - 40, buttonsHeight, 20, translations.options.english, 0, 0, 1);
+    bntTranslatePT = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) - 10, buttonsHeight, 20, translations.options.portuguese, 0, 0.6, 0);
+    bntMenu = Button:new((Height / 2) - buttonsHeight /2, (Width / 2) + 20, buttonsHeight, 20, translations.options.menu, 0.5, 0, 0);
 
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
@@ -110,6 +114,7 @@ function love.draw()
     elseif state == 'OPCOES' then
         bntTranslatePT:draw();
         bntTranslateEN:draw();
+        bntMenu:draw();
     end 
 end
 

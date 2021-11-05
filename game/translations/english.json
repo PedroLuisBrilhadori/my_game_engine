@@ -6,6 +6,7 @@
     },
     "options": {
         "portuguese": "Portuguese",
-        "english": "English"
+        "english": "English",
+        "menu": "Menu"
     }
 }

@@ -3,5 +3,9 @@
         "start": "start",
         "options": "options",
         "exit": "exit"
+    },
+    "options": {
+        "portuguese": "Portuguese",
+        "english": "English"
     }
 }

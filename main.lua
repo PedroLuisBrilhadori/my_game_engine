@@ -5,9 +5,14 @@ require('game/objects/buttons');
 
 local state = 'MENU';
 
+-- MENU BUTTONS
+local bntComecar;
+local bntOpcoes;
+local bntExit;
+
+-- OBJECTS IN GAME
 local bloco;
 local bloco1;
-local button;
 
 Width = 600;
 Height = 800;
@@ -15,6 +20,17 @@ Height = 800;
 Debug = true;
  
 function love.update (dt)
+    if state == 'MENU' then
+        if bntComecar:update() then 
+            state = 'JOGAR';
+        end
+        if bntOpcoes:update() then
+            state = 'OPCOES'
+        end
+        if bntExit:update() then
+            love.event.quit();
+        end
+    end
     if state == 'JOGAR' then
         Inseto:update(dt)
     end
@@ -23,7 +39,11 @@ end
 function love.load() 
     love.window.setTitle("jogo da formiga");
     Inseto:load();
-    button = Button:new(500, 400, 100, 50, "começar", 0, 0, 1);
+    
+    bntComecar = Button:new((Height / 2) - 40, (Width / 2) - 40, 80, 20, "Começar", 0, 0.5, 0);
+    bntOpcoes = Button:new((Height / 2) - 40, (Width / 2) - 10, 80, 20, "Opções", 0, 0, 1);
+    bntExit = Button:new((Height / 2) - 40, (Width / 2) + 20, 80, 20, "Sair", 1, 0, 0);
+
     bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
     bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
 end
@@ -31,13 +51,14 @@ end
 function love.draw()
 
     if state == 'MENU' then
-        love.graphics.print('1 - Começar \n2 - Opções \nEsc - Sair', 400, 300);
+        bntComecar:draw();
+        bntOpcoes:draw();
+        bntExit:draw();
     elseif state == 'JOGAR' then
         love.graphics.print('M - menu', 700, 10);
         Inseto:draw();
         bloco:draw();
-        bloco1:draw();
-        button:draw();
+        bloco1:draw()
     elseif state == 'OPCOES' then
         love.graphics.print('Opções \nM - menu', 400, 300);
     end 

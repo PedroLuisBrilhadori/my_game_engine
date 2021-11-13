@@ -11,6 +11,8 @@ e
 - <a href="https://github.com/vrld/HC"> HC </a>  Usada as para colisões.
 - <a href="https://github.com/rxi/json.lua"> Json </a> Usada para as traduções.
 
+<hr style="border:2px solid gray"> </hr>
+
 # jogo dos insetos 
 
 ## Game Off 2021 | Bug 

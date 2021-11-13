@@ -1,6 +1,6 @@
 ----- GLOBAL VARS
 HC = require('HC-master');
-Json = require('cjson');
+Json = require('json');
 State = 'MENU';
 Width = 600;
 Height = 800;

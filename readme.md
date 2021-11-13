@@ -1,3 +1,16 @@
+# Insect Game 
+
+## Game Off 2021 | Bug 
+Game developed by:
+<a href="https://github.com/PedroLuisBrilhadori">Pedro Luís Brilhadori</a> 
+e 
+<a href="https://github.com/LucasNomi">LucasNomi</a>
+
+
+### Used Libs
+- <a href="https://github.com/vrld/HC"> HC </a>  Usada as para colisões.
+- <a href="https://github.com/rxi/json.lua"> Json </a> Usada para as traduções.
+
 # jogo dos insetos 
 
 ## Game Off 2021 | Bug 

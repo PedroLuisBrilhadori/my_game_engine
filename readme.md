@@ -3,7 +3,7 @@
 ## Game Off 2021 | Bug 
 Game developed by:
 <a href="https://github.com/PedroLuisBrilhadori">Pedro Luís Brilhadori</a> 
-e 
+and
 <a href="https://github.com/LucasNomi">LucasNomi</a>
 
 

@@ -56,8 +56,6 @@ function love.load()
     Options:load();
     Game:load();
 
-    --- CAMERA
-    local cam = Camera()
 end
 
 function love.draw()

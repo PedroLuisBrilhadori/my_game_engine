@@ -27,6 +27,7 @@ function Game:draw()
         bloco:draw();
         bloco1:draw();
     Cam:detach()
+
 end
 
 function Game:update(dt)

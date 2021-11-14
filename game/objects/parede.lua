@@ -50,9 +50,4 @@ function Parede:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(1, 1, 1, 1);
-
-    if Debug then
-        self.body:draw();
-        love.graphics.print("Parede Y: " .. tostring(self.y) .. "\nParede X: " .. tostring(self.x), 10, 50);
-    end
 end

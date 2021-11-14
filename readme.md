@@ -9,7 +9,7 @@ and
 
 ### Used Libs
 - <a href="https://github.com/vrld/HC"> HC </a>  Used for Collisons.
-- <a href="https://github.com/rxi/json.lua"> Json </a> Used for languages.
+- <a href="https://github.com/rxi/json.lua"> Json </a> Used for translations.
 
 <hr style="border:2px solid gray"> </hr>
 

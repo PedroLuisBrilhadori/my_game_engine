@@ -1,5 +1,4 @@
 Inseto = {}
-local colisao;
 
 function Inseto:load() 
     self.x = Height / 2;
@@ -56,13 +55,6 @@ function Inseto:update(dt)
     -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 
-    -- detecta colisão
-    Colisao = "não"
-	for shape, delta in pairs(HC.collisions(self.body)) do
-		Colisao = "sim"
-		self.x = self.x + delta.x;
-		self.y = self.y + delta.y;
-	end
 end
 
 

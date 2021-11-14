@@ -1,6 +1,7 @@
 ----- GLOBAL VARS
-HC = require('HC-master');
-Json = require('json');
+HC = require('libs/HC-master');
+Camera = require('libs/camera.lua');
+Json = require('libs/json');
 State = 'MENU';
 Width = 600;
 Height = 800;

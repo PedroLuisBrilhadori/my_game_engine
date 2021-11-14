@@ -1,7 +1,7 @@
 ----- GLOBAL VARS
-HC = require('libs/HC-master');
-Camera = require('libs/camera.lua');
-Json = require('libs/json');
+HC = require('HC-master');
+Camera = require('camera');
+Json = require('json');
 State = 'MENU';
 Width = 600;
 Height = 800;
@@ -55,6 +55,9 @@ function love.load()
     Menu:load();
     Options:load();
     Game:load();
+
+    --- CAMERA
+    local cam = Camera()
 end
 
 function love.draw()

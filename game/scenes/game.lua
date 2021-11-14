@@ -15,6 +15,9 @@ function Game:load()
 end
 
 function Game:draw()
+    if Debug then 
+        love.graphics.print("Player Y: " .. tostring(math.floor(Inseto.y)) .. "\nPlayer X: " .. tostring(math.floor(Inseto.x)), 10, 0);
+    end
     love.graphics.print('M - menu', 730, 10);
 
     Cam:attach()

@@ -57,9 +57,9 @@ function Inseto:update(dt)
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 
     -- detecta colisão
-    colisao = "não"
+    Colisao = "não"
 	for shape, delta in pairs(HC.collisions(self.body)) do
-		colisao = "sim"
+		Colisao = "sim"
 		self.x = self.x + delta.x;
 		self.y = self.y + delta.y;
 	end
@@ -71,8 +71,4 @@ function Inseto:draw()
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(1, 1, 1, 1);
 
-    if Debug then 
-        self.body:draw();
-        love.graphics.print("Player Y: " .. tostring(math.floor(self.y)) .. "\nPlayer X: " .. tostring(math.floor(self.x).. "\ncolisão: " .. colisao), 10, 0);
-    end
 end

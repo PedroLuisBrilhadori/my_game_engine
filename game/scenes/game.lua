@@ -15,7 +15,7 @@ function Game:load()
 end
 
 function Game:draw()
-    love.graphics.print('M - menu', 700, 10);
+    love.graphics.print('M - menu', 730, 10);
 
     Cam:attach()
         Inseto:draw();

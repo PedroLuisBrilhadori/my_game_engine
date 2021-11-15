@@ -55,4 +55,10 @@ function Game:update(dt)
     for shape, delta in pairs(HC.collisions(posto_troca.body)) do
 		ColisaoP = true;
 	end
+
+    ColisaoP = false;
+    for shape, delta in pairs(HC.collisions(posto_troca.body)) do
+		ColisaoP = true;
+	end
+
 end

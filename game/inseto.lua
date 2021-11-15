@@ -57,7 +57,7 @@ function Inseto:super()
         self.type = BESOURO;
     else
         self.fly = false;
-        self.type = BESOURO;
+        self.type = INSETO_PADRAO;
     end
 end
 

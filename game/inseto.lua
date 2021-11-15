@@ -17,9 +17,10 @@ function Inseto:load()
 
     -- configurações do inseto
     self.inventory = false;
-    self.fly = false;
+    self.fly = true;
     self.attack = false;
     self.create = false;
+    self.type = INSETO_PADRAO;
 end
 
 function Inseto:update(dt)
@@ -48,6 +49,16 @@ function Inseto:update(dt)
     -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 
+end
+
+function Inseto:super()
+    if self.fly == false then
+        self.fly = true
+        self.type = BESOURO;
+    else
+        self.fly = false;
+        self.type = BESOURO;
+    end
 end
 
 

@@ -18,7 +18,7 @@ end
 function Game:draw()
     if Debug then 
         love.graphics.print("Player Y: " .. tostring(math.floor(Inseto.y)) .. "\nPlayer X: " .. tostring(math.floor(Inseto.x) .. "\nColisão: " .. colisao), 10, 0);
-        love.graphics.print("Parede Y: " .. tostring(bloco.y) .. "\nParede X: " .. tostring(bloco.x), 10, 60);
+        love.graphics.print("Tipo do inseto:" .. tostring(Inseto.type), 10, 60);
     end
     love.graphics.print('M - menu', 730, 10);
 

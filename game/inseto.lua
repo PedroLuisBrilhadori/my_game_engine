@@ -37,21 +37,6 @@ function Inseto:update(dt)
 		self.x = self.x + self.speed * dt;
 	end
 
-    -- impede que o inseto passe para o lado de fora 
-
-    --[[if self.y < 0 then 
-        self.y = 0;
-    end
-    if self.x < 0 then
-        self.x = 0;
-    end
-    if self.y > Width - self.width then 
-        self.y = Width - self.width;
-    end
-    if self.x > Height - self.height then 
-        self.x = Height - self.height;
-    end]]--
-
     -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 

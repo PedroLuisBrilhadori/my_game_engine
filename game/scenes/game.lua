@@ -26,6 +26,7 @@ function Game:draw()
 
     if ColisaoP == true then
         love.graphics.print('F - Abrir Posto', 715, 30); 
+        Posto_troca:Abrir()
     end
 
 

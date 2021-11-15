@@ -46,6 +46,15 @@ function Posto_troca:new(x, y, width, height, ...)
     return self;
 end
 
+function Posto_troca:Abrir()
+    function love.keypressed(key)
+        if key == 'f' then
+            if ColisaoP == true then
+                State = 'MENU'
+            end
+        end
+    end
+end
 
 function Posto_troca:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);

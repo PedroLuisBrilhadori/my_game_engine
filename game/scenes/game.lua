@@ -41,5 +41,6 @@ function Game:update(dt)
 		colisao = "sim"
 		Inseto.x = Inseto.x + delta.x;
 		Inseto.y = Inseto.y + delta.y;
-	end
+        Cam:lockPosition(Inseto.x, Inseto.y)
+    end
 end

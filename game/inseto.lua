@@ -1,17 +1,25 @@
 Inseto = {}
 
 function Inseto:load() 
+    -- posição do inseto
     self.x = Height / 2;
     self.y = Width / 2;
+    
+    -- movimento
     self.speed = 600;
-
     self.xvel = self.speed * math.cos(math.pi / 4);
     self.yvel = self.speed * math.sin(math.pi / 4);
 
+    -- tamanho do inseto 
     self.width = 20;
     self.height = 20;
-
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
+
+    -- configurações do inseto
+    self.inventory = false;
+    self.fly = false;
+    self.attack = false;
+    self.create = false;
 end
 
 function Inseto:update(dt)

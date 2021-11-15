@@ -1,5 +1,4 @@
 Game = {}
-local colisao;
 
 require('game/inseto');
 require('game/objects/parede');
@@ -17,30 +16,32 @@ end
 
 function Game:draw()
     if Debug then 
-        love.graphics.print("Player Y: " .. tostring(math.floor(Inseto.y)) .. "\nPlayer X: " .. tostring(math.floor(Inseto.x) .. "\nColisão: " .. colisao), 10, 0);
-        love.graphics.print("Parede Y: " .. tostring(bloco.y) .. "\nParede X: " .. tostring(bloco.x), 10, 60);
+        love.graphics.print("Player Y: " .. tostring(math.floor(Inseto.y)) .. "\nPlayer X: " .. tostring(math.floor(Inseto.x) .. "\nColisão: " ..  Inseto.colisao), 10, 0);
+        love.graphics.print("Tipo do inseto:" .. tostring(Inseto.type), 10, 60);
     end
     love.graphics.print('M - menu', 730, 10);
 
 
     Cam:attach()
-        Inseto:draw();
         bloco:draw();
         bloco1:draw();
+        Inseto:draw();
     Cam:detach()
 
 end
 
 function Game:update(dt)
     Inseto:update(dt);
-    Cam:lookAt(Inseto.x, Inseto.y);
-
-    -- detecta colisão
-    colisao = "não"
-	for shape, delta in pairs(HC.collisions(Inseto.body)) do
-		colisao = "sim"
-		Inseto.x = Inseto.x + delta.x;
-		Inseto.y = Inseto.y + delta.y;
+    
+    if Inseto.colisao == true then
         Cam:lockPosition(Inseto.x, Inseto.y)
+    else 
+        Cam:lookAt(Inseto.x, Inseto.y);
+    end
+
+    if Inseto.type == BESOURO then
+        bloco:disableColision();
+    else 
+        bloco:enableColision();
     end
 end

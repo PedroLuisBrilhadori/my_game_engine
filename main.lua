@@ -1,3 +1,9 @@
+-------- TIPOS DE INSETO
+INSETO_PADRAO = 1;
+BESOURO = 2;
+LOUVA_DEUS = 3;
+FORMIGA = 4;
+
 ----- GLOBAL VARS
 HC = require('libs/HC-master');
 Camera = require('libs/camera');
@@ -84,6 +90,8 @@ function love.keypressed(key)
         else
             Debug = true;
         end
+    elseif key == 'e' then
+        Inseto:super();
     end
 end 
 

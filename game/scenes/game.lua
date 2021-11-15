@@ -22,6 +22,7 @@ function Game:draw()
     end
     love.graphics.print('M - menu', 730, 10);
 
+
     Cam:attach()
         Inseto:draw();
         bloco:draw();

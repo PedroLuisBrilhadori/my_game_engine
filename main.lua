@@ -78,6 +78,10 @@ function love.keypressed(key)
         State = 'OPCOES';
     elseif key == 'm' then
         State = 'MENU';
+    elseif key == 'f' then
+        if ColisaoP == true then
+            State = 'MENU';
+        end
     elseif key == 'o' then
         if Debug then 
             Debug = false;

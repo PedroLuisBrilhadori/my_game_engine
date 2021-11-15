@@ -24,9 +24,9 @@ function Game:draw()
 
 
     Cam:attach()
-        Inseto:draw();
         bloco:draw();
         bloco1:draw();
+        Inseto:draw();
     Cam:detach()
 
 end
@@ -34,6 +34,12 @@ end
 function Game:update(dt)
     Inseto:update(dt);
     Cam:lookAt(Inseto.x, Inseto.y);
+
+    if Inseto.type == BESOURO then
+        bloco:disableColision();
+    else 
+        bloco:enableColision();
+    end
 
     -- detecta colisão
     colisao = "não"

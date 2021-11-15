@@ -46,6 +46,14 @@ function Parede:new(x, y ,width, height, ...)
     return self;
 end
 
+function Parede:disableColision() 
+    HC.remove(self.body);
+end
+
+function Parede:enableColision()
+    HC.register(self.body);
+end
+
 function Parede:draw()
     love.graphics.setColor(self.r, self.g, self.b, self.a);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);

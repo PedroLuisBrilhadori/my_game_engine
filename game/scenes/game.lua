@@ -6,6 +6,7 @@ require('game/scenes/levels/level');
 function Game:load()
     Cam = Camera();
     Inseto:load();
+    Level:load();
 end
 
 function Game:draw()

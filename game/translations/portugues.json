@@ -8,5 +8,8 @@
         "portuguese": "Português",
         "english": "Inglês",
         "menu": "Menu"
+    },
+    "insetos": {
+        "ant": "Formiga"
     }
 }

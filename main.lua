@@ -23,6 +23,9 @@ require('game/scenes/options');
 -- GAME
 require('game/scenes/game');
 
+--MENU POSTO TROCA
+require('game/scenes/menu_posto_troca')
+
 -------------- TRANSLATIONS 
 local jsonRawPT = '';
 local jsonRawEN = ''; 
@@ -43,6 +46,7 @@ Translations = PT;
 function Translate()
     Menu:translate();
     Options:translate();
+    MenuP:translate();
 end  
 
 
@@ -61,6 +65,7 @@ function love.load()
     Menu:load();
     Options:load();
     Game:load();
+    MenuP:load();
 
 end
 
@@ -72,6 +77,8 @@ function love.draw()
         Game:draw();
     elseif State == 'OPCOES' then
         Options:draw();
+    elseif State == 'MENUP' then
+        MenuP:draw();
     end 
 end
 
@@ -86,7 +93,7 @@ function love.keypressed(key)
         State = 'MENU';
     elseif key == 'f' then
         if ColisaoP == true then
-            State = 'MENU';
+            State = 'MENUP';
         end
     elseif key == 'o' then
         if Debug then 
@@ -104,5 +111,7 @@ function love.mousepressed(x, y, button, istouch, presses)
         Menu:update(x, y);
     elseif State == 'OPCOES' then
         Options:update(x, y);
+    elseif State == 'MENUP' then
+        MenuP:update(x, y);
     end 
 end

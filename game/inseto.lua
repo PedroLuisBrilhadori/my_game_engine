@@ -7,7 +7,7 @@ function Inseto:load()
     
     -- movimento
 	self.colisao = 'não';
-    self.speed = 600;
+    self.speed = 100;
     self.xvel = self.speed * math.cos(math.pi / 4);
     self.yvel = self.speed * math.sin(math.pi / 4);
 

@@ -15,5 +15,5 @@ function Level:update(dt)
 end
 
 function Level:draw()
-    Level1_structure:drawAll()
+    Level1_structure:draw()
 end

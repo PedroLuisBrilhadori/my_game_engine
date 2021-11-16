@@ -1,6 +1,11 @@
 Folha = {}
 
-function Folha:new(x, y ,width, height)
+local x = 250;
+local y = 250;
+local width = 10;
+local height = 10;
+
+function Folha:load()
     
     self.x = x;
     self.y = y;

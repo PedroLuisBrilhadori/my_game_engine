@@ -1,17 +1,11 @@
 Game = {}
 
 require('game/inseto');
-require('game/objects/parede');
-local bloco;
-local bloco1;
+require('game/scenes/levels/level');
 
 function Game:load()
     Cam = Camera();
     Inseto:load();
-
-    bloco1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
-    bloco = Parede:new(100, 400, 200, 10, 1, 0, 0);
-
 end
 
 function Game:draw()
@@ -23,8 +17,7 @@ function Game:draw()
 
 
     Cam:attach()
-        bloco:draw();
-        bloco1:draw();
+        Level1:draw();
         Inseto:draw();
     Cam:detach()
 
@@ -39,9 +32,5 @@ function Game:update(dt)
         Cam:lookAt(Inseto.x, Inseto.y);
     end
 
-    if Inseto.type == BESOURO then
-        bloco:disableColision();
-    else 
-        bloco:enableColision();
-    end
+    Level1:update(dt);
 end

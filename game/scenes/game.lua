@@ -17,7 +17,7 @@ function Game:draw()
 
 
     Cam:attach()
-        Level1:draw();
+        Level:draw();
         Inseto:draw();
     Cam:detach()
 
@@ -32,5 +32,5 @@ function Game:update(dt)
         Cam:lookAt(Inseto.x, Inseto.y);
     end
 
-    Level1:update(dt);
+    Level:update(dt);
 end

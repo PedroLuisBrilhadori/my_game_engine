@@ -1,8 +1,8 @@
-Level1 = {}
+Level = {}
 
 require('game/scenes/levels/1/level1');
 
-function Level1:update(dt) 
+function Level:update(dt) 
     if Inseto.type == BESOURO then
         Level1_structure:disableAllColisions();
     else  
@@ -10,6 +10,6 @@ function Level1:update(dt)
     end
 end
 
-function Level1:draw()
+function Level:draw()
     Level1_structure:drawAll()
 end

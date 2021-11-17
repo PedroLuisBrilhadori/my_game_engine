@@ -7,11 +7,7 @@ function Level:load()
 end
 
 function Level:update(dt) 
-    if Inseto.type == BESOURO then
-        Level1_structure:disableAllColisions();
-    else  
-        Level1_structure:enableAllColisions();
-    end
+    Level1_structure:update(dt);
 end
 
 function Level:draw()

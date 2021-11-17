@@ -7,7 +7,7 @@ function Inseto:load()
     
     -- movimento
 	self.colisao = 'não';
-    self.speed = 100;
+    self.speed = 150;
     self.xvel = self.speed * math.cos(math.pi / 4);
     self.yvel = self.speed * math.sin(math.pi / 4);
 
@@ -80,10 +80,16 @@ function Inseto:super()
         if self.inventory == false then
             if Folha.colisao == true then
                 self.inventory = true;
+                self.speed = 100;
+                self.xvel = self.speed * math.cos(math.pi / 4);
+                self.yvel = self.speed * math.sin(math.pi / 4);
             end
         else 
             self.inventory = false;
             Folha:drop((self.x - Folha.width), (self.y - Folha.height));
+            self.speed = 150;
+            self.xvel = self.speed * math.cos(math.pi / 4);
+            self.yvel = self.speed * math.sin(math.pi / 4);
         end
     end
 end

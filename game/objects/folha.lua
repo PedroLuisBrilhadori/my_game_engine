@@ -26,9 +26,14 @@ function Folha:load()
 end
 
 function Folha:update(dt)
-    if Folha:checkColision() then
-        self.colisao = true;
+    self.colisao = self:colision();
+end
+
+function Folha:colision()
+    if self:checkColision() then 
+        return true;
     end
+    return false;
 end
 
 function Folha:checkColision()

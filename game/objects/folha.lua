@@ -1,7 +1,5 @@
 Folha = {}
 
-require('game/inseto');
-
 local x = 250;
 local y = 250;
 local width = 10;
@@ -29,18 +27,18 @@ end
 
 function Folha:update(dt)
     if Folha:checkColision() then
-        self.x = 300;
+        self.colisao = true;
     end
 end
 
 function Folha:checkColision()
     if self.x > (Inseto.x + Inseto.width) or Inseto.x > (self.x + self.width) then 
-        self.colisao = false;
+        return false;
     end 
     if self.y > (Inseto.y + Inseto.height) or Inseto.y > (self.y + self.height) then
-        self.colisao = false;
+        return false;
     end
-    self.colisao = true;
+    return true;
 end
 
 function Folha:draw()

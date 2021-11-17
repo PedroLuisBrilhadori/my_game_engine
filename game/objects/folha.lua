@@ -46,3 +46,8 @@ function Folha:draw()
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(1, 1, 1, 1);
 end
+
+function Folha:drop(x, y)
+    self.x = x;
+    self.y = y;
+end

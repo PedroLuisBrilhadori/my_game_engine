@@ -47,6 +47,12 @@ function Inseto:update(dt)
 		self.x = self.x + self.speed * dt;
 	end
 
+    -- inventario 
+    if self.inventory == true and self.type == FORMIGA then
+        Folha.x = self.x;
+        Folha.y = self.y;
+    end
+
     -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
 
@@ -56,16 +62,29 @@ function Inseto:update(dt)
 		self.colisao = "sim"
 		self.x = self.x + delta.x;
 		self.y = self.y + delta.y;
-	end
+	end    
 end
 
 function Inseto:super()
-    if self.fly == false then
-        self.fly = true
-        self.type = BESOURO;
-    else
-        self.fly = false;
-        self.type = INSETO_PADRAO;
+    self.type = FORMIGA;
+
+    if self.type == BESOURO then
+        if self.fly == false then
+            self.fly = true
+            self.type = BESOURO;
+        else
+            self.fly = false;
+            self.type = INSETO_PADRAO;
+        end
+    elseif self.type == FORMIGA then
+        if self.inventory == false then
+            if Folha.colisao == true then
+                self.inventory = true;
+            end
+        else 
+            self.inventory = false;
+            Folha:drop((self.x - Folha.width), (self.y - Folha.height));
+        end
     end
 end
 

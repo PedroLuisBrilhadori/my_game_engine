@@ -42,5 +42,4 @@ function Level1_structure:update(dt)
     else  
         Level1_structure:enableAllColisions();
     end
-    
 end

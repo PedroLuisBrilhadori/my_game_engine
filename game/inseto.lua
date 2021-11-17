@@ -49,8 +49,8 @@ function Inseto:update(dt)
 
     -- inventario 
     if self.inventory == true and self.type == FORMIGA then
-        Folha.x = self.x;
-        Folha.y = self.y;
+        Folha.x = self.x + 5;
+        Folha.y = self.y + 5;
     end
 
     -- move o "corpo" de colisão junto com a figura do inseto

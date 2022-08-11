@@ -40,13 +40,14 @@ function Level1_structure:draw()
         luzes:draw();
     end
 
-    Folha:draw();  
+    Inseto:draw();
+    Folha:draw();
 end
 
 function Level1_structure:update(dt)
     Folha:update(dt);
 
-    if Inseto.type == BESOURO then
+    if Inseto.fl then
         Level1_structure:disableAllColisions();
     else  
         Level1_structure:enableAllColisions();

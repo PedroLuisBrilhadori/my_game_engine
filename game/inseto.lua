@@ -18,10 +18,10 @@ function Inseto:load()
 
     -- configurações do inseto
     self.inventory = false;
-    self.fly = true;
+    self.fly = false;
     self.attack = false;
     self.create = false;
-    self.type = INSETO_PADRAO;
+    self.type = InsetoEnum.BESOURO;
 end
 
 function Inseto:update(dt)
@@ -48,7 +48,7 @@ function Inseto:update(dt)
 	end
 
     -- inventario 
-    if self.inventory == true and self.type == FORMIGA then
+    if self.inventory == true and self.type == InsetoEnum.FORMIGA then
         Folha.x = self.x + 5;
         Folha.y = self.y + 5;
     end
@@ -66,27 +66,19 @@ function Inseto:update(dt)
 end
 
 function Inseto:super()
-    self.type = FORMIGA;
+    if self.type == InsetoEnum.BESOURO then
+        self.fly = not self.fly;
+    end
 
-    if self.type == BESOURO then
-        if self.fly == false then
-            self.fly = true
-            self.type = BESOURO;
-        else
-            self.fly = false;
-            self.type = INSETO_PADRAO;
-        end
-    elseif self.type == FORMIGA then
-        if self.inventory == false then
-            if Folha.colisao == true then
+    if self.type == InsetoEnum.FORMIGA then
+        if (Folha.colisao == true) and (self.inventory == false)  then
                 self.inventory = true;
                 self.speed = 100;
                 self.xvel = self.speed * math.cos(math.pi / 4);
                 self.yvel = self.speed * math.sin(math.pi / 4);
-            end
-        else 
+        elseif(self.inventory == true) then
             self.inventory = false;
-            Folha:drop((self.x - Folha.width), (self.y - Folha.height));
+            Folha:drop((self.x + Folha.width), (self.y + Folha.height));
             self.speed = 150;
             self.xvel = self.speed * math.cos(math.pi / 4);
             self.yvel = self.speed * math.sin(math.pi / 4);
@@ -99,5 +91,4 @@ function Inseto:draw()
     love.graphics.setColor(0, 0, 1, 1);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(1, 1, 1, 1);
-
 end

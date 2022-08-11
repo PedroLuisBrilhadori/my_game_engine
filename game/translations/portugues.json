@@ -1,12 +1,12 @@
 {
-    "menu": {
-        "start": "Começar",
-        "options": "Configurações",
-        "exit": "Sair"
-    },
-    "options": {
-        "portuguese": "Português",
-        "english": "Inglês",
-        "menu": "Menu"
-    }
+  "menu": {
+    "start": "Começar",
+    "options": "Configurações",
+    "exit": "Sair"
+  },
+  "options": {
+    "portuguese": "Português",
+    "english": "Inglês",
+    "menu": "Menu"
+  }
 }

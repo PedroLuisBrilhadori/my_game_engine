@@ -1,8 +1,10 @@
 -------- TIPOS DE INSETO
-INSETO_PADRAO = 1;
-BESOURO = 2;
-LOUVA_DEUS = 3;
-FORMIGA = 4;
+InsetoEnum = {
+    PADRAO = 1;
+    BESOURO = 2;
+    LOUVA_DEUS = 3;
+    FORMIGA = 4;
+}
 
 ----- GLOBAL VARS
 HC = require('libs/HC-master');
@@ -84,7 +86,7 @@ function love.keypressed(key)
         State = 'OPCOES';
     elseif key == 'm' then
         State = 'MENU';
-    elseif key == 'o' then
+    elseif key == 'f1' then
         if Debug then 
             Debug = false;
         else
@@ -92,6 +94,14 @@ function love.keypressed(key)
         end
     elseif key == 'e' then
         Inseto:super();
+    elseif key == "u" then
+        Inseto.type = InsetoEnum.FORMIGA;
+    elseif key == "i" then
+        Inseto.type = InsetoEnum.LOUVA_DEUS;
+    elseif key == "o" then
+        Inseto.type = InsetoEnum.BESOURO;
+    elseif key == "p" then
+        Inseto.type = InsetoEnum.PADRAO;
     end
 end 
 

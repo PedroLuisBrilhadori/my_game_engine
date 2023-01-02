@@ -7,14 +7,26 @@ Level1_structure = {};
 
 
 function Level1_structure:load()
-    paredes = {
-        teste1 = Parede:new(100, 200, 200, 40, 1, 0.5, 0);
-        teste = Parede:new(100, 400, 200, 10, 1, 0, 0);
-    }
 
-    luzes = {
-        teste = Parede:new(200, 600, 200, 10);
-    }
+    local structureJSON = '';
+
+for linhas in io.lines('./test.json') do
+    structureJSON = structureJSON .. linhas;
+end        
+
+local objects = Json.decode(structureJSON);
+
+    for i, parede in pairs(objects.objects.paredes) do 
+        if parede then 
+            table.insert(paredes, Parede:new(parede.x, parede.y, parede.width, parede.height, parede.r, parede.g, parede.b, parede.a));
+        end
+    end
+
+    for i, parede in pairs(objects.objects.luzes) do 
+        if parede then 
+            table.insert(luzes, Parede:new(parede.x, parede.y, parede.width, parede.height, parede.r, parede.g, parede.b, parede.a));
+        end
+    end
 
     Folha:load();
 end
@@ -47,7 +59,7 @@ end
 function Level1_structure:update(dt)
     Folha:update(dt);
 
-    if Inseto.fl then
+    if Inseto.fly then
         Level1_structure:disableAllColisions();
     else  
         Level1_structure:enableAllColisions();

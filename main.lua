@@ -45,7 +45,7 @@ Translations = PT;
 function Translate()
     Menu:translate();
     Options:translate();
-end  
+end
 
 
 ------------ LOVE FUNCTIONS
@@ -96,12 +96,16 @@ function love.keypressed(key)
         Inseto:super();
     elseif key == "u" then
         Inseto.type = InsetoEnum.FORMIGA;
+        Inseto:reset();
     elseif key == "i" then
         Inseto.type = InsetoEnum.LOUVA_DEUS;
+        Inseto:reset();
     elseif key == "o" then
         Inseto.type = InsetoEnum.BESOURO;
+        Inseto:reset();
     elseif key == "p" then
         Inseto.type = InsetoEnum.PADRAO;
+        Inseto:reset();
     end
 end 
 
@@ -111,4 +115,8 @@ function love.mousepressed(x, y, button, istouch, presses)
     elseif State == 'OPCOES' then
         Options:update(x, y);
     end 
+end
+
+function love.conf(t)
+	t.console = true
 end

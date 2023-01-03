@@ -77,13 +77,19 @@ function Inseto:super()
                 self.xvel = self.speed * math.cos(math.pi / 4);
                 self.yvel = self.speed * math.sin(math.pi / 4);
         elseif(self.inventory == true) then
-            self.inventory = false;
+            Inseto:reset();
             Folha:drop((self.x + Folha.width), (self.y + Folha.height));
-            self.speed = 150;
-            self.xvel = self.speed * math.cos(math.pi / 4);
-            self.yvel = self.speed * math.sin(math.pi / 4);
         end
     end
+end
+
+function Inseto:reset ()
+    self.fly = false; 
+    self.attack = false; 
+    self.inventory = false;
+    self.speed = 150;
+    self.xvel = self.speed * math.cos(math.pi / 4);
+    self.yvel = self.speed * math.sin(math.pi / 4);
 end
 
 

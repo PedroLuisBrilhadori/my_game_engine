@@ -12,7 +12,7 @@ InsetoEnum = {
 HC = require('libs/HC-master');
 Camera = require('libs/camera');
 Json = require('libs/json');
-State = 'MENU';
+State = 'JOGAR';
 Width = 600;
 Height = 800;
 Debug = true;
@@ -96,20 +96,6 @@ function Main:keypressed(key)
         else
             Debug = true;
         end
-    elseif key == 'e' then
-        Inseto:super();
-    elseif key == "u" then
-        Inseto.type = InsetoEnum.FORMIGA;
-        Inseto:reset();
-    elseif key == "i" then
-        Inseto.type = InsetoEnum.LOUVA_DEUS;
-        Inseto:reset();
-    elseif key == "o" then
-        Inseto.type = InsetoEnum.BESOURO;
-        Inseto:reset();
-    elseif key == "p" then
-        Inseto.type = InsetoEnum.PADRAO;
-        Inseto:reset();
     end
 end
 

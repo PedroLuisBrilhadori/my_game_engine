@@ -8,50 +8,39 @@ function Inseto:load()
     -- movimento
 	self.colisao = 'não';
     self.speed = 150;
-    self.xvel = self.speed * math.cos(math.pi / 4);
-    self.yvel = self.speed * math.sin(math.pi / 4);
+
+    self.moviment = 'stop'
 
     -- tamanho do inseto 
-    self.width = 20;
-    self.height = 20;
+    self.width = 15;
+    self.height = 15;
     self.body = HC.rectangle(self.x, self.y, self.width, self.height);
-
-    -- configurações do inseto
-    self.inventory = false;
-    self.fly = false;
-    self.attack = false;
-    self.create = false;
-    self.type = InsetoEnum.BESOURO;
 end
 
 function Inseto:update(dt)
-    if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
-		self.y = self.y - self.yvel * dt;
-		self.x = self.x - self.xvel * dt;
-	elseif love.keyboard.isDown("a") and love.keyboard.isDown("s") then
-		self.y = self.y + self.yvel * dt;
-		self.x = self.x - self.xvel * dt;
-	elseif love.keyboard.isDown("s") and love.keyboard.isDown("d") then
-		self.y = self.y + self.yvel * dt;
-		self.x = self.x + self.xvel * dt;
-	elseif love.keyboard.isDown("d") and love.keyboard.isDown("w") then
-		self.y = self.y - self.yvel * dt;
-		self.x = self.x + self.xvel * dt;
-	elseif love.keyboard.isDown("w") then
-		self.y = self.y - self.speed * dt;
-	elseif love.keyboard.isDown("a") then
-		self.x = self.x - self.speed * dt;
-	elseif love.keyboard.isDown("s") then
-		self.y = self.y + self.speed * dt;
-	elseif love.keyboard.isDown("d") then
-		self.x = self.x + self.speed * dt;
+	if love.keyboard.isDown("w") and self.moviment ~= 'down' then
+        self.moviment = 'up'
+	elseif love.keyboard.isDown("s") and self.moviment ~= 'up' then
+        self.moviment = 'down'
+	elseif love.keyboard.isDown("a") and self.moviment ~= 'rigth' then
+        self.moviment = 'left'
+	elseif love.keyboard.isDown("d") and self.moviment ~= 'left' then
+        self.moviment = 'rigth'
 	end
 
-    -- inventario 
-    if self.inventory == true and self.type == InsetoEnum.FORMIGA then
-        Folha.x = self.x + 5;
-        Folha.y = self.y + 5;
+    if self.moviment == 'left' then 
+		self.x = self.x - self.speed * dt;
+    elseif self.moviment == 'rigth' then
+		self.x = self.x + self.speed * dt;
+
+    elseif self.moviment == 'down' then
+        self.y = self.y + self.speed * dt;
+    elseif self.moviment == 'up' then
+        self.y = self.y - self.speed * dt;
+    elseif self.moviment == 'stop' then
+
     end
+
 
     -- move o "corpo" de colisão junto com a figura do inseto
     self.body:moveTo(self.x + (self.width/ 2), self.y + (self.height / 2));
@@ -65,36 +54,9 @@ function Inseto:update(dt)
 	end    
 end
 
-function Inseto:super()
-    if self.type == InsetoEnum.BESOURO then
-        self.fly = not self.fly;
-    end
-
-    if self.type == InsetoEnum.FORMIGA then
-        if (Folha.colisao == true) and (self.inventory == false)  then
-                self.inventory = true;
-                self.speed = 100;
-                self.xvel = self.speed * math.cos(math.pi / 4);
-                self.yvel = self.speed * math.sin(math.pi / 4);
-        elseif(self.inventory == true) then
-            Inseto:reset();
-            Folha:drop((self.x + Folha.width), (self.y + Folha.height));
-        end
-    end
-end
-
-function Inseto:reset ()
-    self.fly = false; 
-    self.attack = false; 
-    self.inventory = false;
-    self.speed = 150;
-    self.xvel = self.speed * math.cos(math.pi / 4);
-    self.yvel = self.speed * math.sin(math.pi / 4);
-end
-
 
 function Inseto:draw() 
-    love.graphics.setColor(0, 0, 1, 1);
+    love.graphics.setColor(0.2, 0.7, 0.1, 1);
     love.graphics.rectangle('fill', self.x, self.y, self.width, self.height);
     love.graphics.setColor(1, 1, 1, 1);
 end

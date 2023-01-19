@@ -1,10 +1,8 @@
 require('core/objects/parede');
-require('core/objects/folha');
+require('game/objects/comida');
 
 local paredes = {};
-local luzes = {};
 Level1_structure = {};
-
 
 function Level1_structure:load()
 
@@ -22,25 +20,7 @@ local objects = Json.decode(structureJSON);
         end
     end
 
-    for i, parede in pairs(objects.objects.luzes) do 
-        if parede then 
-            table.insert(luzes, Parede:new(parede.x, parede.y, parede.width, parede.height, parede.r, parede.g, parede.b, parede.a));
-        end
-    end
-
-    Folha:load();
-end
-
-function Level1_structure:disableAllColisions()
-    for i, bloco in pairs(paredes) do
-        bloco:disableColision();
-    end    
-end
-
-function Level1_structure:enableAllColisions()
-    for i, bloco in pairs(paredes) do
-        bloco:enableColision();
-    end     
+    Comida:load();
 end
 
 function Level1_structure:draw()
@@ -48,20 +28,9 @@ function Level1_structure:draw()
         bloco:draw();
     end  
 
-    for i, luzes in pairs(luzes) do 
-        luzes:draw();
-    end
-
     Inseto:draw();
-    Folha:draw();
+    Comida:load()
 end
 
 function Level1_structure:update(dt)
-    Folha:update(dt);
-
-    if Inseto.fly then
-        Level1_structure:disableAllColisions();
-    else  
-        Level1_structure:enableAllColisions();
-    end
 end

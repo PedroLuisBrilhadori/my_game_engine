@@ -1,6 +1,6 @@
 Game = {}
 
-require('game/inseto');
+require('game/objects/inseto');
 require('game/scenes/levels/level');
 
 function Game:load()

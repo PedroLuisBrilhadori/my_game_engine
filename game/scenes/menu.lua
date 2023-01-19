@@ -1,5 +1,5 @@
 Menu = {}
-require('game/objects/buttons');
+require('core/objects/buttons');
 
 -- MENU BUTTONS
 local bntComecar;

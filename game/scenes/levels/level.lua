@@ -1,6 +1,6 @@
 Level = {}
 
-require('game/scenes/levels/1/level1');
+require('game/scenes/levels/1/level');
 
 function Level:load()
     Level1_structure:load();

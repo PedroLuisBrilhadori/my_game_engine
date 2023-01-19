@@ -1,5 +1,5 @@
 Options = {}
-require('game/objects/buttons');
+require('core/objects/buttons');
 
 -- OPTIONS BUTTONS;
 local bntTranslatePT;

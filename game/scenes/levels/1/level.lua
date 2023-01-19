@@ -1,5 +1,5 @@
-require('game/objects/parede');
-require('game/objects/folha');
+require('core/objects/parede');
+require('core/objects/folha');
 
 local paredes = {};
 local luzes = {};
